@@ -22,14 +22,14 @@ function Registro() {
       registroEmail.value = "";
       registroPassword.value = "";
       registroTelefono.value = "";
-      document.querySelector("#resultado").innerHTML = `Registro exitoso`;
+      document.querySelector("#resultadoRegistro").innerHTML = `Registro exitoso`;
       setTimeout(() => {
         navigate("/");
       }, 1500);
     } else {
       manejoRespuesta(respuesta.details);
       setTimeout(() => {
-        document.querySelector("#resultado").innerHTML = ``;
+        document.querySelector("#resultadoRegistro").innerHTML = ``;
       }, 1500);
     }
   };
@@ -100,7 +100,7 @@ function Registro() {
             Volver a Login
           </button>
         </div>
-        <div id="resultado"></div>
+        <div id="resultadoRegistro"></div>
       </Form>
     </>
   );

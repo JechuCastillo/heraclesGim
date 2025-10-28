@@ -77,11 +77,19 @@ body{
 }
 
 #resultado {
-  color: black;
+  color: rgb(255, 59, 59);
   font-weight: bold;
   padding: .3rem 0;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1rem;
+}
+#resultadoRegistro {
+  color: rgb(4, 80, 5);
+  font-weight: bold;
+  padding: .3rem 0;
+  text-align: center;
+  font-size: 1.5rem;
+  padding: .2rem;
 }
 .spinner{
   margin: 0 auto;
