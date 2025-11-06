@@ -1,7 +1,9 @@
 const express = require("express");
-//const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 require("dotenv").config(); //Dotenv para manejar variables de entorno
 const sequelize = require("./config/db"); //conexion a mongodb
+require("./models/UsuarioSistema");
+require("./models/Beneficios");
 const responseHandler = require("./middlewares/responseHandler");
 const errorHandler = require("./middlewares/errorHandler"); 
 const cookies = require("cookie-parser"); //Cookies para poder utilizar las cookies
@@ -15,10 +17,11 @@ app.use(express.json()); //Ayuda al servidor a "Hablar en JSON"
 //rutas
 const usuarioRouter = require("./routes/usuarioRouter");
 const authRouter = require("./routes/authRoutes");
-
+const beneficiosRouter = require("./routes/beneficioRouter");
 //Uso de rutas
 app.use("/api/usuarios", usuarioRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/beneficios", beneficiosRouter);
 app.listen(PORT, (req, res) => {
   console.log(`Servidor corriendo: http://localhost:${PORT}`);
 });
