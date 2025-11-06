@@ -18,8 +18,8 @@ async function crearBeneficio(req, res, next) {
 async function desactivarBeneficio(req, res) {
   try {
     const beneficio = await Beneficios.findByPk(req.params.id);
-    if(!beneficio){
-        return res.error("Beneficio no encontrado", 404);
+    if (!beneficio) {
+      return res.error("Beneficio no encontrado", 404);
     }
     beneficio.activo = false;
     await beneficio.save();
@@ -32,8 +32,8 @@ async function desactivarBeneficio(req, res) {
 async function activarBeneficio(req, res) {
   try {
     const beneficio = await Beneficios.findByPk(req.params.id);
-    if(!beneficio){
-        return res.error("Beneficio no encontrado", 404);
+    if (!beneficio) {
+      return res.error("Beneficio no encontrado", 404);
     }
     beneficio.activo = true;
     await beneficio.save();
@@ -43,4 +43,31 @@ async function activarBeneficio(req, res) {
   }
 }
 
-module.exports = { crearBeneficio, desactivarBeneficio, activarBeneficio };
+async function listarBeneficios(req, res) {
+  try {
+    const beneficios = await Beneficios.findAll();
+    res.success(beneficios);
+  } catch (error) {
+    res.error(error.message, 500);
+  }
+}
+
+async function listarBeneficioUnico(req, res) {
+  try {
+    const beneficio = await Beneficios.findByPk(req.params.id);
+    if (!beneficio) {
+      return res.error("Beneficio no encontrado", 404);
+    }
+    res.success(beneficio);
+  } catch (error) {
+    res.error(error.message, 500);
+  }
+}
+
+module.exports = {
+  crearBeneficio,
+  desactivarBeneficio,
+  activarBeneficio,
+  listarBeneficios,
+  listarBeneficioUnico,
+};
