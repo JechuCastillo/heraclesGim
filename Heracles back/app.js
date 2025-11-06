@@ -4,6 +4,7 @@ require("dotenv").config(); //Dotenv para manejar variables de entorno
 const sequelize = require("./config/db"); //conexion a mongodb
 require("./models/UsuarioSistema");
 require("./models/Beneficios");
+require("./models/Relaciones");
 const responseHandler = require("./middlewares/responseHandler");
 const errorHandler = require("./middlewares/errorHandler"); 
 const cookies = require("cookie-parser"); //Cookies para poder utilizar las cookies

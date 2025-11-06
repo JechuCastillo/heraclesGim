@@ -20,6 +20,10 @@ const Beneficios = sequelize.define(
     precioPuntos:{
         type: DataTypes.INTEGER,
         allowNull: false
+    },
+    activo:{
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     }
   },
   {

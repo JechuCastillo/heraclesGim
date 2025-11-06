@@ -15,4 +15,18 @@ async function crearBeneficio(req, res, next) {
   }
 }
 
-module.exports = { crearBeneficio };
+async function desactivarBeneficio(req, res) {
+  try {
+    const beneficio = await Beneficios.findByPk(req.params.id);
+    if(!beneficio){
+        return res.error("Beneficio no encontrado", 404);
+    }
+    beneficio.activo = false;
+    await beneficio.save();
+    res.success(beneficio);
+  } catch (error) {
+    res.error(error.message, 500);
+  }
+}
+
+module.exports = { crearBeneficio, desactivarBeneficio };
