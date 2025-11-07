@@ -1,6 +1,6 @@
 const { body, validationResult } = require("express-validator");
 const Beneficios = require("../models/Beneficios");
-
+const jwt = require("../service/jwtService");
 async function crearBeneficio(req, res, next) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -64,15 +64,15 @@ async function listarBeneficioUnico(req, res) {
   }
 }
 
-async function modificarBeneficio(req,res){
+async function modificarBeneficio(req, res) {
   try {
     const beneficio = await Beneficios.findByPk(req.params.id);
     if (!beneficio) {
       return res.error("Beneficio no encontrado", 404);
     }
     beneficio.nombreBeneficio = req.body.nombreBeneficio;
-    beneficio.descripcionBeneficio = req.body.descripcion;
-    beneficio.precioPuntos = req.body.precio;
+    beneficio.descripcionBeneficio = req.body.descripcionBeneficio;
+    beneficio.precioPuntos = req.body.precioPuntos;
     await beneficio.save();
     res.success(beneficio);
   } catch (error) {
@@ -80,11 +80,30 @@ async function modificarBeneficio(req,res){
   }
 }
 
+const validarBeneficio = [
+  body("nombreBeneficio")
+    .trim()
+    .notEmpty()
+    .withMessage("El nombre es requerido")
+    .isLength({ max: 150 }),
+  body("descripcionBeneficio")
+    .isString()
+    .trim()
+    .notEmpty()
+    .withMessage("La descripcion es requerida"),
+  body("precioPuntos")
+    .isInt()
+    .withMessage("El precio es requerido")
+    .isInt({ min: 1 })
+    .withMessage("El precio debe ser mayor a 0"),
+];
+
 module.exports = {
   crearBeneficio,
   desactivarBeneficio,
   activarBeneficio,
   listarBeneficios,
   listarBeneficioUnico,
-  modificarBeneficio
+  modificarBeneficio,
+  validarBeneficio
 };
