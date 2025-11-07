@@ -64,10 +64,27 @@ async function listarBeneficioUnico(req, res) {
   }
 }
 
+async function modificarBeneficio(req,res){
+  try {
+    const beneficio = await Beneficios.findByPk(req.params.id);
+    if (!beneficio) {
+      return res.error("Beneficio no encontrado", 404);
+    }
+    beneficio.nombreBeneficio = req.body.nombreBeneficio;
+    beneficio.descripcionBeneficio = req.body.descripcion;
+    beneficio.precioPuntos = req.body.precio;
+    await beneficio.save();
+    res.success(beneficio);
+  } catch (error) {
+    res.error(error.message, 500);
+  }
+}
+
 module.exports = {
   crearBeneficio,
   desactivarBeneficio,
   activarBeneficio,
   listarBeneficios,
   listarBeneficioUnico,
+  modificarBeneficio
 };
