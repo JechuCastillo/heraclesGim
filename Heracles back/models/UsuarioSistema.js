@@ -1,4 +1,5 @@
 const { DataTypes } = require("sequelize");
+const Beneficios = require("./Beneficios");
 const sequelize = require("../config/db");
 
 const UsuarioSistema = sequelize.define(
