@@ -5,12 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background: linear-gradient(
-    185deg,
-    rgba(20, 28, 49, 1) 0%,
-    rgba(24, 38, 67, 1) 50%,
-    rgba(28, 49, 102, 1) 100%
-  );
+ 
 
   width: 100vw;
   height: 100vh;
@@ -24,7 +19,22 @@ p{
     color: white;
 }
 
-.home-admin{
-  background-color: transparent;
-  background: transparent;
+
+body{
+   background: linear-gradient(
+    185deg,
+    rgba(20, 28, 49, 1) 0%,
+    rgba(24, 38, 67, 1) 50%,
+    rgba(28, 49, 102, 1) 100%
+  );
+}
+
+
+/*CSS para paginde de HOME*/
+.home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
 }

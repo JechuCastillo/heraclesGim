@@ -5,12 +5,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-    background: linear-gradient(
-    185deg,
-    rgba(20, 28, 49, 1) 0%,
-    rgba(24, 38, 67, 1) 50%,
-    rgba(28, 49, 102, 1) 100%
-  );
 }
 
 /* Caja del login */

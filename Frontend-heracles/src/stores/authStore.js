@@ -18,9 +18,9 @@ export const useAuthStore = create(
           });
           const data = await response.json();
           if (data.success) {
-            set({ user: data.user });
-            return data;
+            set({ user: data.data.user });
           }
+          return data;
         } catch (error) {
           console.log(error);
         }

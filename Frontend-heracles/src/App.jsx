@@ -7,12 +7,11 @@ import Registro from "./pages/Registro";
 function App() {
   return (
     <Routes>
-      <Route element={<LayoutLogin></LayoutLogin>}>
-        <Route index path="/" element={<Login></Login>}></Route>
-        <Route index path="/register" element={<Registro></Registro>}></Route>
+      <Route path="/" element={<LayoutLogin></LayoutLogin>}>
+        <Route index element={<Login></Login>}></Route>
+        <Route path="/register" element={<Registro></Registro>}></Route>
       </Route>
-      <Route path="/home" element={<Home></Home>}>
-      </Route>
+      <Route path="/home" element={<Home></Home>}></Route>
     </Routes>
   );
 }

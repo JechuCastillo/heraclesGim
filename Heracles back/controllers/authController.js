@@ -43,6 +43,7 @@ async function loginUsuario(usuarioLogin) {
     id: usuarioBD.id,
     email: usuarioBD.correoUsuario,
     rol: usuarioBD.rol,
+    nombre: usuarioBD.nombreUsuario,
   };
   const token = jwt.generarToken(payload);
 
@@ -52,6 +53,7 @@ async function loginUsuario(usuarioLogin) {
       id: usuarioBD.id,
       correoUsuario: usuarioBD.correoUsuario,
       rol: usuarioBD.rol,
+      nombre: usuarioBD.nombreUsuario,
     },
   };
 }
