@@ -8,6 +8,8 @@ async function crearBeneficio(req, res, next) {
   }
   try {
     const nuevoBeneficio = new Beneficios(req.body);
+    nuevoBeneficio.activo = true;
+    nuevoBeneficio.idUsuario=req.user.id;
     await nuevoBeneficio.save();
     res.success(nuevoBeneficio);
   } catch (error) {

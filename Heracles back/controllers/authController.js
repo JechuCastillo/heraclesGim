@@ -40,7 +40,7 @@ async function loginUsuario(usuarioLogin) {
   }
   //Creación del token
   const payload = {
-    id: usuarioBD.id,
+    id: usuarioBD.idUsuario,
     email: usuarioBD.correoUsuario,
     rol: usuarioBD.rol,
     nombre: usuarioBD.nombreUsuario,
@@ -50,7 +50,7 @@ async function loginUsuario(usuarioLogin) {
   return {
     token,
     user: {
-      id: usuarioBD.id,
+      id: usuarioBD.idUsuario,
       correoUsuario: usuarioBD.correoUsuario,
       rol: usuarioBD.rol,
       nombre: usuarioBD.nombreUsuario,
