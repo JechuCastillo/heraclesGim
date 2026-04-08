@@ -1,5 +1,5 @@
 import { useState } from "react";
-function FormBeneficios({ onCancelar }) {
+function FormBeneficios({ onCancelar,onAgregado }) {
   const [formData, setFormData] = useState({
     nombre: "",
     descripcion: "",
@@ -44,24 +44,22 @@ function FormBeneficios({ onCancelar }) {
         },
       );
       const data = await response.json();
-      console.log("Respuesta del servidor:", data);
       if (data.success) {
         onCancelar();
-        console.log("Beneficio agregado exitosamente", data);
+        onAgregado();
       } else {
         console.log(data.error);
       }
     } catch (error) {
       console.error("Error al agregar beneficio:", error);
     }
-    // Lógica para enviar los datos al servidor
   };
   return (
     <>
       <form action="" className="formBeneficios" onSubmit={handleSubmit}>
         <h2>Agregar beneficio</h2>
         <div className="inputs">
-          <label htmlFor="">Nombre del beneficio</label>
+          <label htmlFor="">Nombre del beneficio *</label>
           <input
             type="text"
             value={formData.nombre}
@@ -71,7 +69,7 @@ function FormBeneficios({ onCancelar }) {
             className="inputBeneficio"
           />
           {errores.nombre && <span className="error">{errores.nombre}</span>}
-          <label htmlFor="">Descripcion</label>
+          <label htmlFor="">Descripcion *</label>
           <input
             type="text"
             value={formData.descripcion}
@@ -83,7 +81,7 @@ function FormBeneficios({ onCancelar }) {
           {errores.descripcion && (
             <span className="error">{errores.descripcion}</span>
           )}
-          <label htmlFor="">Puntos requeridos</label>
+          <label htmlFor="">Puntos requeridos *</label>
           <input
             type="number"
             value={formData.puntosRequeridos}
@@ -103,7 +101,7 @@ function FormBeneficios({ onCancelar }) {
           <button type="button" className="cancelar" onClick={onCancelar}>
             Cancelar
           </button>
-          <button type="submit" className="agregar">
+          <button type="submit" className="agregar" >
             Agregar
           </button>
         </div>
